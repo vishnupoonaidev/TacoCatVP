@@ -58,17 +58,82 @@
             <div class="col-lg-8">
                 <pre class="Line-numbers">
                     <code class="language-javascript">
-                        //Call HelloWorld
-                        function HelloWorld(){
-                          alert("hello World");
+                        function getValue(){
+
+                            document.getElementById("alert").classList.add("invisible")
+                        
+                            let userString = document.getElementById("userString").value;
+                        
+                            let revString = reverseString(userString);
+                            
+                            // compare stings then display message
+                        
+                            testPalindrome(userString,revString);
+                        
+                        }
+                        
+                        
+                        
+                        //reverse the string
+                        //logic function
+                        function reverseString(userString){
+                            let revString = [];
+                           
+                            //format string
+                            userString = userString.toLowerCase();
+                        
+                            let regex = /[^a-z0-9]/gi;
+                        
+                            userString=userString.replace(regex,"");
+                        
+                            //reverse a string using a for loop
+                            for (let index = userString.length -1; index >=  0; index--) {
+                               revString += userString[index];
                             }
+                                return revString;
+                           }
+                        
+                        
+                        
+                        
+                           //function to compare and display the results of the Palindrome test
+                        
+                           function testPalindrome(userString,revString){
+                        
+                             if(userString == revString){
+                        
+                                  //write message to the page
+                                document.getElementById("pamsg").innerHTML = "Well done! You entered a palindrome!";
+                                document.getElementById("msg").innerHTML = `your reversed string is: ${revString}`;
+                        
+                            //show the alert box
+                              document.getElementById("alert").classList.remove("invisible");
+                        
+                             }else{
+                        
+                        
+                                document.getElementById("pamsg").innerHTML = "oh no! You did not a palindrome!";
+                                document.getElementById("msg").innerHTML = `your reversed string is: ${revString}`;
+                        
+                                //show the alert box
+                                document.getElementById("alert").classList.remove("invisible");
+                        
+                             }
+                    
+                           }
                     </code>
                 </pre>       
             </div>
             <div class="col-lg-4">
-               <p>The Code is structured in one function.</p>
-               <h4>Hello World</h4>
-               <p>Hello world is a function that displays an alert with a message of "hello World"</p>
+               <p>The Code is structured in three functions.</p>
+               <h4>Function one - getValue</h4>
+               <p>This function gets the value from the user by getting the element by the id for the textbox on the html page</p>
+               <h4>Function two- reverseString</h4>
+               <p>This function reverses the entered string by using a for loop that starts at the end of the array for the string by using the lengt function of a string.
+                It then saves the string array from the end to the start as it iterates throught the loop. This function also removes all case from the word of phrase and symbols using regex.
+                <h4>Function Three - testPalindrome</h4>
+               <p>This function gets reversed string from the second function then compares it to the first string, if it is a palindrome then it displayys a success message. If it is not then it displays a fail message.</p>
+               </p>
             </div>
         </div>
     </div>
